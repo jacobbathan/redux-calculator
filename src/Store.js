@@ -1,15 +1,5 @@
 import { createStore } from "redux";
 
-/*
-{
-  currentInput: 1234.5,
-  stack: [
-    10,
-    20,
-  ]
-}
-*/
-
 function reducer(store, action) {
   if (!store) {
     return {
@@ -26,7 +16,6 @@ function reducer(store, action) {
   }
 
   if (action.type === "pushToStack") {
-    // take current input push it onto the stack
     return {
       currentInput: 0,
       stack: [...store.stack, store.currentInput]
@@ -34,7 +23,6 @@ function reducer(store, action) {
   }
 
   if (action.type === "add") {
-    // take top two things on stack, add, then push answer onto stack
     const answer =
       store.stack[store.stack.length - 1] + store.stack[store.stack.length - 2];
 
@@ -55,6 +43,8 @@ function reducer(store, action) {
   }
 }
 
-const reduxStore = createStore(reducer);
-console.log("initial redux store", reduxStore);
+const reduxStore = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 export default reduxStore;

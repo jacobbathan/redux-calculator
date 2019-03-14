@@ -30,7 +30,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Controls);
+export default connect(mapDispatchToProps)(Controls);
